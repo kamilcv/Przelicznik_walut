@@ -1,0 +1,9 @@
+F:\Przelicznik_walut\Przelicznik_walut\bin\Debug\Przelicznik_walut.exe.config
+F:\Przelicznik_walut\Przelicznik_walut\bin\Debug\Przelicznik_walut.exe
+F:\Przelicznik_walut\Przelicznik_walut\bin\Debug\Przelicznik_walut.pdb
+F:\Przelicznik_walut\Przelicznik_walut\obj\Debug\Przelicznik_walut.csprojAssemblyReference.cache
+F:\Przelicznik_walut\Przelicznik_walut\obj\Debug\Przelicznik_walut.Properties.Resources.resources
+F:\Przelicznik_walut\Przelicznik_walut\obj\Debug\Przelicznik_walut.csproj.GenerateResource.cache
+F:\Przelicznik_walut\Przelicznik_walut\obj\Debug\Przelicznik_walut.csproj.CoreCompileInputs.cache
+F:\Przelicznik_walut\Przelicznik_walut\obj\Debug\Przelicznik_walut.exe
+F:\Przelicznik_walut\Przelicznik_walut\obj\Debug\Przelicznik_walut.pdb
