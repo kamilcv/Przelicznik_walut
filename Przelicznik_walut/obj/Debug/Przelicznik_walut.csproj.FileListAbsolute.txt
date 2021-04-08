@@ -7,3 +7,13 @@ F:\Przelicznik_walut\Przelicznik_walut\obj\Debug\Przelicznik_walut.csproj.Genera
 F:\Przelicznik_walut\Przelicznik_walut\obj\Debug\Przelicznik_walut.csproj.CoreCompileInputs.cache
 F:\Przelicznik_walut\Przelicznik_walut\obj\Debug\Przelicznik_walut.exe
 F:\Przelicznik_walut\Przelicznik_walut\obj\Debug\Przelicznik_walut.pdb
+C:\Users\Ghast007\Documents\GitHub\Przelicznik_walut\Przelicznik_walut\bin\Debug\Przelicznik_walut.exe.config
+C:\Users\Ghast007\Documents\GitHub\Przelicznik_walut\Przelicznik_walut\bin\Debug\Przelicznik_walut.exe
+C:\Users\Ghast007\Documents\GitHub\Przelicznik_walut\Przelicznik_walut\bin\Debug\Przelicznik_walut.pdb
+C:\Users\Ghast007\Documents\GitHub\Przelicznik_walut\Przelicznik_walut\obj\Debug\Przelicznik_walut.csprojAssemblyReference.cache
+C:\Users\Ghast007\Documents\GitHub\Przelicznik_walut\Przelicznik_walut\obj\Debug\Przelicznik_walut.Form1.resources
+C:\Users\Ghast007\Documents\GitHub\Przelicznik_walut\Przelicznik_walut\obj\Debug\Przelicznik_walut.Properties.Resources.resources
+C:\Users\Ghast007\Documents\GitHub\Przelicznik_walut\Przelicznik_walut\obj\Debug\Przelicznik_walut.csproj.GenerateResource.cache
+C:\Users\Ghast007\Documents\GitHub\Przelicznik_walut\Przelicznik_walut\obj\Debug\Przelicznik_walut.csproj.CoreCompileInputs.cache
+C:\Users\Ghast007\Documents\GitHub\Przelicznik_walut\Przelicznik_walut\obj\Debug\Przelicznik_walut.exe
+C:\Users\Ghast007\Documents\GitHub\Przelicznik_walut\Przelicznik_walut\obj\Debug\Przelicznik_walut.pdb
