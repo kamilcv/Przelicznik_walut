@@ -17,3 +17,10 @@ C:\Users\Ghast007\Documents\GitHub\Przelicznik_walut\Przelicznik_walut\obj\Debug
 C:\Users\Ghast007\Documents\GitHub\Przelicznik_walut\Przelicznik_walut\obj\Debug\Przelicznik_walut.csproj.CoreCompileInputs.cache
 C:\Users\Ghast007\Documents\GitHub\Przelicznik_walut\Przelicznik_walut\obj\Debug\Przelicznik_walut.exe
 C:\Users\Ghast007\Documents\GitHub\Przelicznik_walut\Przelicznik_walut\obj\Debug\Przelicznik_walut.pdb
+F:\Przelicznik_walut\Przelicznik_walut\obj\Debug\Przelicznik_walut.Form1.resources
+F:\Przelicznik_walut\Przelicznik_walut\bin\Debug\Newtonsoft.Json.dll
+F:\Przelicznik_walut\Przelicznik_walut\bin\Debug\System.Net.Http.Formatting.dll
+F:\Przelicznik_walut\Przelicznik_walut\bin\Debug\MySql.Data.xml
+F:\Przelicznik_walut\Przelicznik_walut\bin\Debug\Newtonsoft.Json.xml
+F:\Przelicznik_walut\Przelicznik_walut\bin\Debug\System.Net.Http.Formatting.xml
+F:\Przelicznik_walut\Przelicznik_walut\obj\Debug\Przelicznik_walut.csproj.CopyComplete

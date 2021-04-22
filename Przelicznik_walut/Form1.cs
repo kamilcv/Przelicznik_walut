@@ -46,5 +46,21 @@ namespace Przelicznik_walut
         {
 
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            List<ListaWalut> lista_walut = MySQL.PobierzListeWalut();
+
+            for (int i = 0; i < lista_walut.Count; i++)
+            {
+                Console.WriteLine(lista_walut[i].Kod);
+                this.comboBox1.Items.Add(lista_walut[i].Kod);
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -131,6 +131,7 @@ namespace Przelicznik_walut
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(154, 21);
             this.comboBox1.TabIndex = 11;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_1);
             // 
             // comboBox2
             // 
@@ -332,6 +333,7 @@ namespace Przelicznik_walut
             this.button8.TabIndex = 43;
             this.button8.Text = "1";
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button9
             // 
