@@ -33,6 +33,10 @@ namespace Przelicznik_walut
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -44,9 +48,14 @@ namespace Przelicznik_walut
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.buttonDay = new System.Windows.Forms.Button();
+            this.buttonMonth = new System.Windows.Forms.Button();
+            this.buttonYear = new System.Windows.Forms.Button();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.comboBoxWykres = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -64,12 +73,12 @@ namespace Przelicznik_walut
             this.button12 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -164,8 +173,11 @@ namespace Przelicznik_walut
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
+            this.tabPage1.Controls.Add(this.buttonDay);
+            this.tabPage1.Controls.Add(this.buttonMonth);
+            this.tabPage1.Controls.Add(this.buttonYear);
             this.tabPage1.Controls.Add(this.chart1);
-            this.tabPage1.Controls.Add(this.comboBox5);
+            this.tabPage1.Controls.Add(this.comboBoxWykres);
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -175,14 +187,67 @@ namespace Przelicznik_walut
             this.tabPage1.Text = "Wykresy";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
-            // comboBox5
+            // buttonDay
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(145, 18);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(319, 21);
-            this.comboBox5.TabIndex = 1;
-            this.comboBox5.SelectedIndexChanged += new System.EventHandler(this.comboBox5_SelectedIndexChanged);
+            this.buttonDay.Location = new System.Drawing.Point(361, 482);
+            this.buttonDay.Name = "buttonDay";
+            this.buttonDay.Size = new System.Drawing.Size(40, 23);
+            this.buttonDay.TabIndex = 5;
+            this.buttonDay.Text = "7D";
+            this.buttonDay.UseVisualStyleBackColor = true;
+            this.buttonDay.Click += new System.EventHandler(this.buttonDay_Click);
+            // 
+            // buttonMonth
+            // 
+            this.buttonMonth.Location = new System.Drawing.Point(407, 482);
+            this.buttonMonth.Name = "buttonMonth";
+            this.buttonMonth.Size = new System.Drawing.Size(40, 23);
+            this.buttonMonth.TabIndex = 4;
+            this.buttonMonth.Text = "1M";
+            this.buttonMonth.UseVisualStyleBackColor = true;
+            this.buttonMonth.Click += new System.EventHandler(this.buttonMonth_Click);
+            // 
+            // buttonYear
+            // 
+            this.buttonYear.Location = new System.Drawing.Point(453, 482);
+            this.buttonYear.Name = "buttonYear";
+            this.buttonYear.Size = new System.Drawing.Size(40, 23);
+            this.buttonYear.TabIndex = 3;
+            this.buttonYear.Text = "1Y";
+            this.buttonYear.UseVisualStyleBackColor = true;
+            this.buttonYear.Click += new System.EventHandler(this.buttonYear_Click);
+            // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(24, 65);
+            this.chart1.Name = "chart1";
+            series1.BorderWidth = 3;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Legend = "Legend1";
+            series1.Name = "WykresWaluty";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(487, 421);
+            this.chart1.TabIndex = 2;
+            this.chart1.Text = "chart1";
+            title1.Name = "Title1";
+            title1.Text = "Wykres";
+            this.chart1.Titles.Add(title1);
+            this.chart1.Click += new System.EventHandler(this.chart1_Click);
+            // 
+            // comboBoxWykres
+            // 
+            this.comboBoxWykres.FormattingEnabled = true;
+            this.comboBoxWykres.Location = new System.Drawing.Point(145, 18);
+            this.comboBoxWykres.Name = "comboBoxWykres";
+            this.comboBoxWykres.Size = new System.Drawing.Size(319, 21);
+            this.comboBoxWykres.TabIndex = 1;
+            this.comboBoxWykres.SelectedIndexChanged += new System.EventHandler(this.comboBoxWykres_SelectedIndexChanged);
             // 
             // label12
             // 
@@ -196,6 +261,7 @@ namespace Przelicznik_walut
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.chart2);
             this.tabPage2.Controls.Add(this.comboBox4);
             this.tabPage2.Controls.Add(this.label11);
             this.tabPage2.Controls.Add(this.label10);
@@ -207,6 +273,29 @@ namespace Przelicznik_walut
             this.tabPage2.Text = "Prognozy";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // chart2
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea2);
+            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend2.Name = "Legend1";
+            this.chart2.Legends.Add(legend2);
+            this.chart2.Location = new System.Drawing.Point(24, 65);
+            this.chart2.Name = "chart2";
+            series2.BorderWidth = 3;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.Name = "WykresPrognoz";
+            this.chart2.Series.Add(series2);
+            this.chart2.Size = new System.Drawing.Size(487, 421);
+            this.chart2.TabIndex = 6;
+            this.chart2.Text = "chart2";
+            title2.Name = "Title1";
+            title2.Text = "Wykres";
+            this.chart2.Titles.Add(title2);
+            this.chart2.Click += new System.EventHandler(this.chart2_Click);
+            // 
             // comboBox4
             // 
             this.comboBox4.FormattingEnabled = true;
@@ -214,6 +303,7 @@ namespace Przelicznik_walut
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(305, 21);
             this.comboBox4.TabIndex = 2;
+            this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
             // 
             // label11
             // 
@@ -410,29 +500,6 @@ namespace Przelicznik_walut
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 25;
             // 
-            // chart1
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(24, 65);
-            this.chart1.Name = "chart1";
-            series1.BorderWidth = 3;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Legend = "Legend1";
-            series1.Name = "WykresWaluty";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(440, 421);
-            this.chart1.TabIndex = 2;
-            this.chart1.Text = "chart1";
-            title1.Name = "Title1";
-            title1.Text = "Wykres";
-            this.chart1.Titles.Add(title1);
-            this.chart1.Click += new System.EventHandler(this.chart1_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -459,11 +526,12 @@ namespace Przelicznik_walut
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -482,7 +550,7 @@ namespace Przelicznik_walut
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox comboBoxWykres;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.Label label11;
@@ -502,6 +570,10 @@ namespace Przelicznik_walut
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.Button buttonDay;
+        private System.Windows.Forms.Button buttonMonth;
+        private System.Windows.Forms.Button buttonYear;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
     }
 }
 
