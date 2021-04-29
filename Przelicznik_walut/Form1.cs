@@ -37,8 +37,8 @@ namespace Przelicznik_walut
             chart2.Series["WykresPrognoz"].Points.Clear();
             DateTime aktualna_data = DateTime.Now.Date;
             DateTime przeszla_data = DateTime.Today.AddMonths(-1);
-            List<double> ListaCen = MySQL.PobierzKursyWalutyData("CAD", przeszla_data.ToString("yyyy-MM-dd"), aktualna_data.ToString("yyyy-MM-dd"));
-            List<DateTime> ListaDat = MySQL.PobierzListaDat("CAD", przeszla_data.ToString("yyyy-MM-dd"), aktualna_data.ToString("yyyy-MM-dd"));
+            List<double> ListaCen = MySQL.PobierzKursyWalutyData(comboBox4.Text.Substring(0, 3), przeszla_data.ToString("yyyy-MM-dd"), aktualna_data.ToString("yyyy-MM-dd"));
+            List<DateTime> ListaDat = MySQL.PobierzListaDat(comboBox4.Text.Substring(0, 3), przeszla_data.ToString("yyyy-MM-dd"), aktualna_data.ToString("yyyy-MM-dd"));
             for (int i = 0; i < ListaCen.Count; i++)
             {
                 chart2.Series["WykresPrognoz"].Points.AddXY(ListaDat[i].ToString("MM-dd"), ListaCen[i]);
@@ -50,16 +50,37 @@ namespace Przelicznik_walut
 
         }
         //rysowanie wykresow walut
-        private void comboBoxWykres_SelectedIndexChanged(object sender, EventArgs e)
+        /*private void comboBoxWykres_SelectedIndexChanged(object sender, EventArgs e)
         {
             chart1.Series["WykresWaluty"].Points.Clear();
-            DateTime aktualna_data = DateTime.Now.Date;
+            DateTime aktualna_data = DateTime.Today;
             DateTime przeszla_data = DateTime.Today.AddMonths(-1);
             List<double> ListaCen = MySQL.PobierzKursyWalutyData(comboBoxWykres.Text.Substring(0,3), przeszla_data.ToString("yyyy-MM-dd"), aktualna_data.ToString("yyyy-MM-dd"));
             List<DateTime> ListaDat = MySQL.PobierzListaDat(comboBoxWykres.Text.Substring(0, 3), przeszla_data.ToString("yyyy-MM-dd"), aktualna_data.ToString("yyyy-MM-dd"));
             for(int i=0;i<ListaCen.Count;i++)
             {
                 chart1.Series["WykresWaluty"].Points.AddXY(ListaDat[i].ToString("MM-dd"), ListaCen[i]);
+            }
+        }*/
+        private void comboBoxWykres_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            chart1.Series["WykresWaluty"].Points.Clear();
+            DateTime aktualna_data = DateTime.Today;
+            DateTime przeszla_data = DateTime.Today.AddMonths(-1);
+            List<double> ListaCen = MySQL.PobierzKursyWalutyData(comboBoxWykres.Text.Substring(0, 3), przeszla_data.ToString("yyyy-MM-dd"), aktualna_data.ToString("yyyy-MM-dd"));
+            List<DateTime> ListaDat = MySQL.PobierzListaDat(comboBoxWykres.Text.Substring(0, 3), przeszla_data.ToString("yyyy-MM-dd"), aktualna_data.ToString("yyyy-MM-dd"));
+            int licznikDni = 15;
+            while(ListaCen.Count<15)
+            {
+                aktualna_data = DateTime.Today.AddDays(-licznikDni);
+                przeszla_data = DateTime.Today.AddMonths(-(licznikDni+licznikDni));
+                ListaCen = MySQL.PobierzKursyWalutyData(comboBoxWykres.Text.Substring(0, 3), przeszla_data.ToString("yyyy-MM-dd"), aktualna_data.ToString("yyyy-MM-dd"));
+                ListaDat = MySQL.PobierzListaDat(comboBoxWykres.Text.Substring(0, 3), przeszla_data.ToString("yyyy-MM-dd"), aktualna_data.ToString("yyyy-MM-dd"));
+                licznikDni = licznikDni + 15;
+            }
+            for (int i = 0; i < ListaCen.Count; i++)
+            {
+                chart1.Series["WykresWaluty"].Points.AddXY(ListaDat[i].ToString("yyyy-MM-dd"), ListaCen[i]);
             }
         }
 
@@ -95,9 +116,18 @@ namespace Przelicznik_walut
             DateTime przeszla_data = DateTime.Today.AddDays(-7);
             List<double> ListaCen = MySQL.PobierzKursyWalutyData(comboBoxWykres.Text.Substring(0, 3), przeszla_data.ToString("yyyy-MM-dd"), aktualna_data.ToString("yyyy-MM-dd"));
             List<DateTime> ListaDat = MySQL.PobierzListaDat(comboBoxWykres.Text.Substring(0, 3), przeszla_data.ToString("yyyy-MM-dd"), aktualna_data.ToString("yyyy-MM-dd"));
+            int licznikDni = 7;
+            while (ListaCen.Count < 3)
+            {
+                aktualna_data = DateTime.Today.AddDays(-licznikDni);
+                przeszla_data = DateTime.Today.AddMonths(-(licznikDni + licznikDni));
+                ListaCen = MySQL.PobierzKursyWalutyData(comboBoxWykres.Text.Substring(0, 3), przeszla_data.ToString("yyyy-MM-dd"), aktualna_data.ToString("yyyy-MM-dd"));
+                ListaDat = MySQL.PobierzListaDat(comboBoxWykres.Text.Substring(0, 3), przeszla_data.ToString("yyyy-MM-dd"), aktualna_data.ToString("yyyy-MM-dd"));
+                licznikDni = licznikDni + 7;
+            }
             for (int i = 0; i < ListaCen.Count; i++)
             {
-                chart1.Series["WykresWaluty"].Points.AddXY(ListaDat[i].ToString("MM-dd"), ListaCen[i]);
+                chart1.Series["WykresWaluty"].Points.AddXY(ListaDat[i].ToString("yyyy-MM-dd"), ListaCen[i]);
             }
         }
         //przycisk 1 miesiac
@@ -108,9 +138,18 @@ namespace Przelicznik_walut
             DateTime przeszla_data = DateTime.Today.AddMonths(-1);
             List<double> ListaCen = MySQL.PobierzKursyWalutyData(comboBoxWykres.Text.Substring(0, 3), przeszla_data.ToString("yyyy-MM-dd"), aktualna_data.ToString("yyyy-MM-dd"));
             List<DateTime> ListaDat = MySQL.PobierzListaDat(comboBoxWykres.Text.Substring(0, 3), przeszla_data.ToString("yyyy-MM-dd"), aktualna_data.ToString("yyyy-MM-dd"));
+            int licznikDni = 15;
+            while (ListaCen.Count < 15)
+            {
+                aktualna_data = DateTime.Today.AddDays(-licznikDni);
+                przeszla_data = DateTime.Today.AddMonths(-(licznikDni + licznikDni));
+                ListaCen = MySQL.PobierzKursyWalutyData(comboBoxWykres.Text.Substring(0, 3), przeszla_data.ToString("yyyy-MM-dd"), aktualna_data.ToString("yyyy-MM-dd"));
+                ListaDat = MySQL.PobierzListaDat(comboBoxWykres.Text.Substring(0, 3), przeszla_data.ToString("yyyy-MM-dd"), aktualna_data.ToString("yyyy-MM-dd"));
+                licznikDni = licznikDni + 15;
+            }
             for (int i = 0; i < ListaCen.Count; i++)
             {
-                chart1.Series["WykresWaluty"].Points.AddXY(ListaDat[i].ToString("MM-dd"), ListaCen[i]);
+                chart1.Series["WykresWaluty"].Points.AddXY(ListaDat[i].ToString("yyyy-MM-dd"), ListaCen[i]);
             }
         }
         //przycisk 1 rok
@@ -121,23 +160,24 @@ namespace Przelicznik_walut
             DateTime przeszla_data = DateTime.Today.AddYears(-1);
             List<double> ListaCen = MySQL.PobierzKursyWalutyData(comboBoxWykres.Text.Substring(0, 3), przeszla_data.ToString("yyyy-MM-dd"), aktualna_data.ToString("yyyy-MM-dd"));
             List<DateTime> ListaDat = MySQL.PobierzListaDat(comboBoxWykres.Text.Substring(0, 3), przeszla_data.ToString("yyyy-MM-dd"), aktualna_data.ToString("yyyy-MM-dd"));
+            int licznikDni = 160;
+            while (ListaCen.Count < 30)
+            {
+                aktualna_data = DateTime.Today.AddDays(-licznikDni);
+                przeszla_data = DateTime.Today.AddMonths(-(licznikDni + licznikDni));
+                ListaCen = MySQL.PobierzKursyWalutyData(comboBoxWykres.Text.Substring(0, 3), przeszla_data.ToString("yyyy-MM-dd"), aktualna_data.ToString("yyyy-MM-dd"));
+                ListaDat = MySQL.PobierzListaDat(comboBoxWykres.Text.Substring(0, 3), przeszla_data.ToString("yyyy-MM-dd"), aktualna_data.ToString("yyyy-MM-dd"));
+                licznikDni = licznikDni + 160;
+            }
             for (int i = 0; i < ListaCen.Count; i++)
             {
-                chart1.Series["WykresWaluty"].Points.AddXY(ListaDat[i].ToString("MM-dd"), ListaCen[i]);
+                chart1.Series["WykresWaluty"].Points.AddXY(ListaDat[i].ToString("yyyy-MM-dd"), ListaCen[i]);
             }
         }
 
         private void chart2_Click(object sender, EventArgs e)
         {
-            chart2.Series["WykresPrognoz"].Points.Clear();
-            DateTime aktualna_data = DateTime.Now.Date;
-            DateTime przeszla_data = DateTime.Today.AddMonths(-1);
-            List<double> ListaCen = MySQL.PobierzKursyWalutyData("CAD", przeszla_data.ToString("yyyy-MM-dd"), aktualna_data.ToString("yyyy-MM-dd"));
-            List<DateTime> ListaDat = MySQL.PobierzListaDat("CAD", przeszla_data.ToString("yyyy-MM-dd"), aktualna_data.ToString("yyyy-MM-dd"));
-            for (int i = 0; i < ListaCen.Count; i++)
-            {
-                chart2.Series["WykresPrognoz"].Points.AddXY(ListaDat[i].ToString("MM-dd"), ListaCen[i]);
-            }
+
         }
 
         private void comboBox4_SelectedIndexChanged_1(object sender, EventArgs e)
