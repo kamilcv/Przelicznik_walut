@@ -389,6 +389,41 @@ namespace Przelicznik_walut
 
             return kurs;
         }
+        public static List<DateTime> PobierzListaDat(string kod, string data_od, string data_do)
+        {
+            List<DateTime> daty = new List<DateTime>();
+            string connStr = "server=localhost;user=root;database=waluty;port=3306";
+
+            MySqlConnection conn = new MySqlConnection(connStr);
+            try
+            {
+                Console.WriteLine("Connecting to MySQL...");
+                conn.Open();
+
+                string sql = "select data from kursy where kod = '" + kod + "' and data between '" + data_od + "' AND '" + data_do + "';";
+                Console.WriteLine(sql);
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    daty.Add(Convert.ToDateTime(rdr[0]));
+                }
+
+                rdr.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
+            conn.Close();
+            Console.WriteLine("Done.");
+
+            return daty;
+        }
     }
 
     static class Program
@@ -405,6 +440,7 @@ namespace Przelicznik_walut
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+
         }
     }
 }
