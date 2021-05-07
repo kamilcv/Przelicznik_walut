@@ -117,6 +117,7 @@ namespace Przelicznik_walut
             this.button1.TabIndex = 6;
             this.button1.Text = "Przelicz";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -370,6 +371,7 @@ namespace Przelicznik_walut
             this.button3.TabIndex = 38;
             this.button3.Text = "8";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button5
             // 
@@ -382,6 +384,7 @@ namespace Przelicznik_walut
             this.button5.TabIndex = 40;
             this.button5.Text = "9";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click_1);
             // 
             // button4
             // 
@@ -394,6 +397,7 @@ namespace Przelicznik_walut
             this.button4.TabIndex = 39;
             this.button4.Text = "4";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button6
             // 
@@ -406,6 +410,7 @@ namespace Przelicznik_walut
             this.button6.TabIndex = 41;
             this.button6.Text = "5";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button7
             // 
@@ -418,6 +423,7 @@ namespace Przelicznik_walut
             this.button7.TabIndex = 42;
             this.button7.Text = "6";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button8
             // 
@@ -443,6 +449,7 @@ namespace Przelicznik_walut
             this.button9.TabIndex = 44;
             this.button9.Text = "2";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button10
             // 
@@ -455,6 +462,7 @@ namespace Przelicznik_walut
             this.button10.TabIndex = 45;
             this.button10.Text = "3";
             this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button11
             // 
@@ -467,6 +475,7 @@ namespace Przelicznik_walut
             this.button11.TabIndex = 46;
             this.button11.Text = ".";
             this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button12
             // 
@@ -479,6 +488,7 @@ namespace Przelicznik_walut
             this.button12.TabIndex = 47;
             this.button12.Text = "0";
             this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // button13
             // 
@@ -491,6 +501,7 @@ namespace Przelicznik_walut
             this.button13.TabIndex = 48;
             this.button13.Text = "<<";
             this.button13.UseVisualStyleBackColor = false;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // dateTimePicker1
             // 

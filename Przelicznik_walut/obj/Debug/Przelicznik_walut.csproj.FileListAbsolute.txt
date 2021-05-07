@@ -24,3 +24,9 @@ F:\Przelicznik_walut\Przelicznik_walut\bin\Debug\MySql.Data.xml
 F:\Przelicznik_walut\Przelicznik_walut\bin\Debug\Newtonsoft.Json.xml
 F:\Przelicznik_walut\Przelicznik_walut\bin\Debug\System.Net.Http.Formatting.xml
 F:\Przelicznik_walut\Przelicznik_walut\obj\Debug\Przelicznik_walut.csproj.CopyComplete
+C:\Users\Ghast007\Documents\GitHub\Przelicznik_walut\Przelicznik_walut\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Ghast007\Documents\GitHub\Przelicznik_walut\Przelicznik_walut\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\Ghast007\Documents\GitHub\Przelicznik_walut\Przelicznik_walut\bin\Debug\MySql.Data.xml
+C:\Users\Ghast007\Documents\GitHub\Przelicznik_walut\Przelicznik_walut\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Ghast007\Documents\GitHub\Przelicznik_walut\Przelicznik_walut\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\Ghast007\Documents\GitHub\Przelicznik_walut\Przelicznik_walut\obj\Debug\Przelicznik_walut.csproj.CopyComplete

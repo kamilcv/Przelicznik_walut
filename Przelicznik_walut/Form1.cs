@@ -12,6 +12,10 @@ namespace Przelicznik_walut
 {
     public partial class Form1 : Form
     {
+        string sign;
+        double num1;
+        double num2;
+        bool startNewNumber = true;
         public Form1()
         {
             InitializeComponent();
@@ -91,12 +95,12 @@ namespace Przelicznik_walut
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            NumberBt_Click("7");
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-
+            NumberBt_Click("1");
         }
 
         private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
@@ -183,6 +187,85 @@ namespace Przelicznik_walut
         private void comboBox4_SelectedIndexChanged_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text.IndexOf(".") == -1)
+            {
+                textBox1.Text += ".";
+                startNewNumber = false;
+            }
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            NumberBt_Click("0");
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Length == 0)
+            {
+                textBox1.Text = "0";
+            }
+            else
+            {
+                textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1);
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            NumberBt_Click("2");
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            NumberBt_Click("3");
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            NumberBt_Click("4");
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            NumberBt_Click("5");
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            NumberBt_Click("6");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            NumberBt_Click("8");
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            NumberBt_Click("9");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NumberBt_Click(string number)
+        {
+            if (startNewNumber == false)
+            {
+                textBox1.Text += number;
+            }
+            else
+            {
+                textBox1.Text = number;
+                startNewNumber = false;
+            }
         }
     }
 }
