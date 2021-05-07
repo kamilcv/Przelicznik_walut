@@ -21,6 +21,11 @@ namespace Przelicznik_walut
             InitializeComponent();
             List<ListaWalut> lista_walut = MySQL.PobierzListeWalut();
             //wypelnienie combo box'ow kodami i nazwami walut
+
+            this.comboBox1.Items.Add("PLN ( polski zloty )");
+            this.comboBox2.Items.Add("PLN ( polski zloty )");
+
+
             for (int i = 0; i < lista_walut.Count; i++)
             {
                 Console.WriteLine(lista_walut[i].Kod);
@@ -191,9 +196,9 @@ namespace Przelicznik_walut
 
         private void button11_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.IndexOf(".") == -1)
+            if (textBox1.Text.IndexOf(",") == -1)
             {
-                textBox1.Text += ".";
+                textBox1.Text += ",";
                 startNewNumber = false;
             }
         }
@@ -252,7 +257,91 @@ namespace Przelicznik_walut
 
         private void button1_Click(object sender, EventArgs e)
         {
+            double waluta_1;
+            double waluta_2;
+            if (textBox1.Text.Length != 0)
+            {
+                waluta_1 = Convert.ToDouble(textBox1.Text);
+            }
+            else
+            {
+                waluta_1 = 0;
+            }
 
+            if (textBox2.Text.Length != 0)
+            {
+                waluta_2 = Convert.ToDouble(textBox2.Text);
+            }
+            else
+            {
+                waluta_2 = 0;
+            }
+
+
+            string kod_waluta_1 = "";
+            string kod_waluta_2 = "";
+
+            if (comboBox1.SelectedIndex != -1)
+            {
+                kod_waluta_1 = comboBox1.SelectedItem.ToString();
+                kod_waluta_1 = kod_waluta_1.Remove(3, kod_waluta_1.Length - 3);
+            }
+            if (comboBox2.SelectedIndex != -1)
+            {
+                kod_waluta_2 = comboBox2.SelectedItem.ToString();
+                kod_waluta_2 = kod_waluta_2.Remove(3, kod_waluta_2.Length - 3);
+            }
+
+            if (comboBox1.SelectedIndex != -1 && comboBox2.SelectedIndex != -1)
+            {
+                Console.WriteLine(waluta_1 + " " + waluta_2 + " " + kod_waluta_1 + " " + kod_waluta_2);
+
+                double kurs_waluty_1;
+                double kurs_waluty_2;
+
+                if (kod_waluta_1 != "PLN")
+                {
+                    kurs_waluty_1 = MySQL.PobierzOstatniKursWaluty(kod_waluta_1);
+                }
+                else
+                {
+                    kurs_waluty_1 = 1.0;
+                }
+
+                if (kod_waluta_2 != "PLN")
+                {
+                    kurs_waluty_2 = MySQL.PobierzOstatniKursWaluty(kod_waluta_2);
+                }
+                else
+                {
+                    kurs_waluty_2 = 1.0;
+                }
+
+                double wynik = 0;
+
+                if (kod_waluta_1 == "PLN" || kod_waluta_2 == "PLN")
+                {
+                    if (kurs_waluty_1 >= kurs_waluty_2)
+                    {
+                        wynik = waluta_1 * kurs_waluty_1;
+                    }
+                    else
+                    {
+                        wynik = waluta_1 / kurs_waluty_2;
+                    }
+                }
+                else
+                {
+                    wynik = waluta_1 * kurs_waluty_1;
+
+
+                    wynik /= kurs_waluty_2;
+
+                }
+
+                textBox2.Text = Convert.ToString(wynik);
+
+            }
         }
 
         private void NumberBt_Click(string number)
