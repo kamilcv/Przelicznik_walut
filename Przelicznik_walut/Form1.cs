@@ -325,7 +325,7 @@ namespace Przelicznik_walut
                 }
                 else if( kod_waluta_2 == "PLN" )
                 {
-                    wynik = waluta_1 * kurs_waluty_2;
+                    wynik = waluta_1 * kurs_waluty_1;
                 }
                 else
                 {
