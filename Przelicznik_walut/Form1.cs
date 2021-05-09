@@ -319,16 +319,13 @@ namespace Przelicznik_walut
 
                 double wynik = 0;
 
-                if (kod_waluta_1 == "PLN" || kod_waluta_2 == "PLN")
+                if (kod_waluta_1 == "PLN")
                 {
-                    if (kurs_waluty_1 >= kurs_waluty_2)
-                    {
-                        wynik = waluta_1 * kurs_waluty_1;
-                    }
-                    else
-                    {
-                        wynik = waluta_1 / kurs_waluty_2;
-                    }
+                    wynik = waluta_1 / kurs_waluty_2;
+                }
+                else if( kod_waluta_2 == "PLN" )
+                {
+                    wynik = waluta_1 * kurs_waluty_2;
                 }
                 else
                 {
