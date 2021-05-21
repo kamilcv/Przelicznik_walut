@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Przelicznik_walut
@@ -45,12 +39,16 @@ namespace Przelicznik_walut
         {
             chart2.Series["WykresPrognoz"].Points.Clear();
             DateTime aktualna_data = DateTime.Now.Date;
-            DateTime przeszla_data = DateTime.Today.AddMonths(-1);
+            DateTime przeszla_data = DateTime.Today.AddDays(-14);
             List<double> ListaCen = MySQL.PobierzKursyWalutyData(comboBox4.Text.Substring(0, 3), przeszla_data.ToString("yyyy-MM-dd"), aktualna_data.ToString("yyyy-MM-dd"));
-            List<DateTime> ListaDat = MySQL.PobierzListaDat(comboBox4.Text.Substring(0, 3), przeszla_data.ToString("yyyy-MM-dd"), aktualna_data.ToString("yyyy-MM-dd"));
+            List<DateTime> ListaDat = new List<DateTime>();
             for (int i = 0; i < ListaCen.Count; i++)
             {
-                chart2.Series["WykresPrognoz"].Points.AddXY(ListaDat[i].ToString("MM-dd"), ListaCen[i]);
+                ListaDat.Add(DateTime.Today.AddDays(+i));
+            }
+            for (int i = 0; i < ListaCen.Count; i++)
+            {
+                chart2.Series["WykresPrognoz"].Points.AddXY(ListaDat[i].ToString("MM-dd"), ListaCen[ListaCen.Count-1-i]);
             }
         }
 
@@ -79,10 +77,10 @@ namespace Przelicznik_walut
             List<double> ListaCen = MySQL.PobierzKursyWalutyData(comboBoxWykres.Text.Substring(0, 3), przeszla_data.ToString("yyyy-MM-dd"), aktualna_data.ToString("yyyy-MM-dd"));
             List<DateTime> ListaDat = MySQL.PobierzListaDat(comboBoxWykres.Text.Substring(0, 3), przeszla_data.ToString("yyyy-MM-dd"), aktualna_data.ToString("yyyy-MM-dd"));
             int licznikDni = 15;
-            while(ListaCen.Count<15)
+            while (ListaCen.Count < 15)
             {
                 aktualna_data = DateTime.Today.AddDays(-licznikDni);
-                przeszla_data = DateTime.Today.AddMonths(-(licznikDni+licznikDni));
+                przeszla_data = DateTime.Today.AddMonths(-(licznikDni + licznikDni));
                 ListaCen = MySQL.PobierzKursyWalutyData(comboBoxWykres.Text.Substring(0, 3), przeszla_data.ToString("yyyy-MM-dd"), aktualna_data.ToString("yyyy-MM-dd"));
                 ListaDat = MySQL.PobierzListaDat(comboBoxWykres.Text.Substring(0, 3), przeszla_data.ToString("yyyy-MM-dd"), aktualna_data.ToString("yyyy-MM-dd"));
                 licznikDni = licznikDni + 15;
@@ -323,7 +321,7 @@ namespace Przelicznik_walut
                 {
                     wynik = waluta_1 / kurs_waluty_2;
                 }
-                else if( kod_waluta_2 == "PLN" )
+                else if (kod_waluta_2 == "PLN")
                 {
                     wynik = waluta_1 * kurs_waluty_1;
                 }
