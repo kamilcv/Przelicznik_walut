@@ -46,9 +46,16 @@ namespace Przelicznik_walut
             {
                 ListaDat.Add(DateTime.Today.AddDays(+i));
             }
-            for (int i = 0; i < ListaCen.Count; i++)
+            if(ListaCen.Count>=3)
             {
-                chart2.Series["WykresPrognoz"].Points.AddXY(ListaDat[i].ToString("MM-dd"), ListaCen[ListaCen.Count-1-i]);
+                for(int i = 0; i < 7; i++) 
+                {
+                    MySQL.Prognozuj(ListaCen);
+                }
+                for (int i = 0; i < 7; i++)
+                {
+                    chart2.Series["WykresPrognoz"].Points.AddXY(ListaDat[i].ToString("MM-dd"), ListaCen[ListaCen.Count - 7 + i]);
+                }
             }
         }
 

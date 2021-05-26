@@ -424,6 +424,32 @@ namespace Przelicznik_walut
 
             return daty;
         }
+        public static List<double> Prognozuj(List<double> kurs)
+        {
+            var rand = new Random();
+            //pobierane zostaja 3 ostatnie ceny z listy
+            double kurs1 = kurs[kurs.Count - 3];
+            double kurs2 = kurs[kurs.Count - 2];
+            double kurs3 = kurs[kurs.Count - 1];
+            double[] ilorazKurs = new double[2];
+            //okreslam wartosci o jakie roznia sie nasze ceny
+            ilorazKurs[0] = 1-(kurs1 / kurs2);
+            ilorazKurs[1] = 1-(kurs2 / kurs3);
+            double prognozowanaWartosc = kurs3 + (kurs3 * ilorazKurs[rand.Next(0, 2)]);
+            if((kurs1>=kurs2 && kurs2>=kurs3)||(kurs1 <= kurs2 && kurs2 <= kurs3))
+            {
+                if(rand.Next(0, 2)==1)
+                {
+                    prognozowanaWartosc = kurs3 + (kurs3 * ilorazKurs[rand.Next(0, 2)]);
+                }
+                else
+                {
+                    prognozowanaWartosc = kurs3 - (kurs3 * ilorazKurs[rand.Next(0, 2)]);
+                }
+            }
+            kurs.Add(prognozowanaWartosc);
+            return kurs;
+        }
     }
 
     static class Program
@@ -440,7 +466,6 @@ namespace Przelicznik_walut
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
-
         }
     }
 }
